@@ -1,4 +1,5 @@
 from modelos.avaliacao import Avaliacao
+from modelos.cardapio.item_cardapio import ItemCardapio
 
 class Restaurante:
     '''Representa um restaurante e suas características.'''
@@ -15,7 +16,7 @@ class Restaurante:
         self._categoria = categoria.upper()
         self._ativo = False  # com o _ antes transforma em private
         self._avaliacoes = []
-
+        self._cardapio = []
         Restaurante.restaurantes.append(self)
 
     def __str__(self):
@@ -43,7 +44,7 @@ class Restaurante:
         Registra uma avaliação para o restaurante.
 
         Parâmetros:
-        - cliente (str): O nome do cliente que fez a avaliação
+        - nome (str): O nome do cliente que fez a avaliação
         - nota (float)> A nota atribuída ao restaurante (entre 1 e 5)
         '''
         if 0 < nota < 5:
@@ -60,7 +61,21 @@ class Restaurante:
         media = round(soma_das_notas/quantidade_de_notas, 1)
         return media
     
-    
+
+    def adicionar_no_cardapio(self, item):
+        if isinstance(item, ItemCardapio):
+            self._cardapio.append(item)
+
+    @property
+    def exibir_cardapio(self):
+        print(f'Cardapio do restaurante {self._nome} \n')
+        for i, item in enumerate(self._cardapio, start=1):
+            if hasattr(item, '_descricao'):
+                mensagem = f'{i} - Nome:{item._nome} | Preço: R${item._preco} | Descrição: {item._descricao}'
+            else:
+                mensagem = f'{i} - Nome:{item._nome} | Preço: R${item._preco} | Tamanho: {item._tamanho}'
+            print(mensagem)
+
 # restaurante_izo = Restaurante('izo', 'GastroBar')
 # restaurante_izo.alternar_estado()
 # restaurante_champignon = Restaurante('Champignon', 'Pizzaria')

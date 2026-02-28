@@ -1,3 +1,12 @@
-class Bebida:
+from modelos.cardapio.item_cardapio import ItemCardapio
+
+class Bebida(ItemCardapio):
     def __init__(self, nome, preco, tamanho):
-        pass
+        super().__init__(nome, preco)
+        self._tamanho = tamanho
+
+    def __str__(self):
+        return f'Sua bebida se chama {self._nome}'
+    
+    def aplicar_desconto(self):
+        self._preco -= self._preco * 0.05
