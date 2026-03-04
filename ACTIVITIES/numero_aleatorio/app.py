@@ -25,7 +25,6 @@ def adivinhar_numero(numero_aleatorio, chute, qtd_chutes):
         else:
             print(f'\nParabéns! Você acertou o número {numero_aleatorio}')
             print(f'A quantidades de chutes foi {qtd_chutes}')
-            return     
         
     except ValueError as e:
         print(f'Entrada inválida: {e}')
