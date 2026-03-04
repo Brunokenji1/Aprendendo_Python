@@ -1,4 +1,10 @@
 def calcular_gorjeta():
+    '''
+    Faz o calculo automatico da gorjeta que o cliente deve pagar
+    Inputs:
+    - valor_conta: float - variavel que recebe o valor da conta da mesa
+    - porcentagem_gorjeta: float - a porcentagem que o cliente irá pagar
+    '''
     try:
         valor_conta = float(input('Digite o valor da conta: '))
         porcentagem_gorjeta = float(input('Digite a porcentagem de gorjeta: '))
